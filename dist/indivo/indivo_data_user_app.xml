@@ -1,0 +1,13 @@
+<user_app name='My Devices' email='mydevices@apps.indivo.org'>
+      <description>Add Continua connectivity to your record.</description>
+      <consumer_key>mydevices</consumer_key>
+      <secret>mysecret</secret>
+      <frameable>True</frameable>
+      <has_ui>True</has_ui>
+      <start_url_template>
+	http://your.server:8080/MyDevices/start_auth?record_id={record_id}&#38;carenet_id={carenet_id}&#38;document_id={document_id}
+      </start_url_template>
+      <callback_url>
+        http://your.server:8080/MyDevices/after_auth
+      </callback_url>
+</user_app>

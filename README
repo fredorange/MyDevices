@@ -1,0 +1,39 @@
+
+	Copyright(c) 2011 France Telecom / Orange Labs
+	This file is part of MyDevices, a PHA for Indivo X.
+
+                    Continua interface for Indivo X
+                             MyDevices
+
+Contacts: 
+	frederic.perez@orange-ftgroup.com
+	olivier.graille@orange-ftgroup.com
+
+MyDevices is Continua WAN Receiver project for Indivo X. 
+
+- What is Indivo X ?
+
+Indivo (http://indivohealth.org) is a health record platform, developed by the Children's Hospital Informatics Program (CHIP) in Boston, that empowers patients to take control of their personal health record. Indivo integrates health information across sites of care and over time. 
+Indivo is free and open-source, uses open, unencumbered standards, and is actively deployed in diverse settings, in particular the Children's Hospital Boston and the Dossia Consortium. 
+
+- What is Continua ?
+
+Continua Health Alliance (http://www.continuaalliance.org) is a non-profit, open industry organization of healthcare and technology companies joining together in collaboration to improve the quality of personal healthcare. Continua is dedicated to establishing a system of interoperable personal connected health solutions with the knowledge that extending those solutions into the home fosters independence, empowers individuals and provides the opportunity for truly personalized health and wellness management.
+France Telecom Orange is a promoter member of the Continua Health Alliance.
+
+- What is MyDevices ?
+
+MyDevices is an Indivo PHA project that delivers a Continua WAN Interface Receiver module(Continua Design Guidelines 2010) for Indivo X : It receives securely observations from many Medical Devices (Blood pressure, Weight scale, Thermometer…) and stores them in Indivo using SNOMED CT and UCUM nomenclatures. It enables end-to-end connected health solutions based on the Continua architecture and Indivo.
+
+Please note:
+1) As the project is still ongoing, the application is not yet certified by the Continua Health Alliance, so Continua conformity can’t apply.
+2) The trusted service (WS-Security profile) required by the Continua Design Guidelines 2010 is not provided in this distribution. You can contact us if you would like more information about it.
+
+- Licensing
+There is no restriction for the use of MyDevices. 
+MyDevices is free software: you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation, version 3 (LGPLv3).
+
+MyDevices is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with MyDevices. If not, see http://www.gnu.org/licenses.

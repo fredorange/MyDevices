@@ -1,0 +1,105 @@
+
+	Copyright(c) 2011 France Telecom / Orange Labs
+	This file is part of MyDevices, a PHA for Indivo X.
+
+                             MyDevices
+                    A Continua interface for Indivo X
+
+MyDevices is an Indivo X PHA project that delivers a Continua WAN Interface Receiver Open Source module for Indivo X: It receives securely observations from many Medical Devices (Blood pressure, Weight scale, Thermometer…) and stores them in Indivo using SNOMED CT and UCUM nomenclatures. It will enable end-to-end connected health solutions based on the Continua architecture and Indivo X. 
+
+Please note that, as the project is still ongoing, the application is not yet certified by the Continua Health Alliance, so Continua conformity can’t apply.
+
+France Telecom Orange is a promoter member of the Continua Health Alliance (http://www.continuaalliance.org/about-the-alliance/member-companies.html).
+
+This document describes how to install and configure MyDevices for Indivo X.
+
+Before starting
+---------------
+
+MyDevices is a Java Web Application that uses Metro framework. Please install on your server Java EE 6 SDK & GlassFish Server Open Source Edition 3.1 (or higher) (http://glassfish.java.net); 
+or install Metro 2.1 with your preferred servlet/jsp container.
+
+The following instructions assume that you have already installed and operated Indivo X; 
+if not please first refer to the Indivo X Wiki (http://wiki.chip.org/indivo/index.php/Indivo).
+
+1 Installation
+--------------
+
+MyDevices is made of two web application archives, MyDevices.war and ContinuaConnector.war, located in the dist\war directory:
+- MyDevices.war provides the frameable Indivo GUI in order to authorize and add the Continua connectivity to the record.
+- ContinuaConnector.war provides the technical interface to receive and store in a record measurements taken by a Continua device. 
+
+
+1.1 Database
+(PgAdmin is your friend - http://www.pgadmin.org -)
+
+* On the PostgreSql Server, create a database named "mydevices" 
+* Set the Indivo user ("indivo" by default) as owner of the database or create a new user.
+* Add the following table to the database: 
+
+CREATE TABLE credentials (
+id SERIAL PRIMARY KEY,
+accessKey VARCHAR(100) UNIQUE NOT NULL,
+controlKey VARCHAR(100),
+indivo_token VARCHAR(100) NOT NULL,
+indivo_tokenSecret VARCHAR(100) NOT NULL, 
+indivo_recordId VARCHAR(100) UNIQUE NOT NULL);
+
+
+1.2 Web Application archives
+
+* Deploy both war provided in the dist\war directory.
+
+For Glassfish users, use the Glassfish administration console, http://your.server:4848. 
+	->  Select "Applications" and click on the "Deploy" button. 
+	->  Select the war you want to deploy. 
+	->  Uncheck the "enabled" checkbox of "status" item. (you have to update config files before running it).
+	->  Click on "OK".
+
+* Update the config.properties files in MyDevices\WEB-INF\classes and ContinuaConnector\WEB-INF\classes with your Indivo X and PostgreSQL addresses and credentials. 
+
+For Glassfish users, you will find the deployed archives in glassfish_install_directory\glassfish\domains\domain_name\applications.
+
+PHA_CONSUMER_KEY	indivo consumer_key	-> Refer to your Indivo PHA config
+PHA_CONSUMER_SECRET     indivo secret		-> Refer to your Indivo PHA config
+PHA_APP_ID		indivo app id		-> Refer to your Indivo PHA config
+INDIVO_SERVER_URL       indivo server 		-> the Indivo server
+INDIVO_UI_SERVER_URL    indivo ui server	-> the Indivo UI server
+DB_DRIVER 		org.postgresql.Driver   
+DB_USER                 PostgreSql user		-> Refer to 1.1
+DB_PASSWORD             PostgreSql password	-> Refer to 1.1
+DB_URL                  Postgresql database     -> Refer to 1.1 
+
+* Start or restart the applications.
+
+For Glassfish users, enable your application with the Admin console: select "Applications", check your application in the list and click on the "Enable" button.
+
+* Check that the applications are running with a web browser:
+
+http://your.server:8080/MyDevices/
+http://your.server:8080/continuaConnector/DeviceObservationConsumer_Service?wsdl
+
+
+
+2 Indivo X setup
+----------------
+
+* You need to register MyDevices on Indivo X. Here is a sample of user_app element to add to indivo_data.xml file (on Indivo server). Update "your.server" to your server alias or IP. 
+
+<user_app name='My Devices' email='mydevices@apps.indivo.org'>
+      <description>Add Continua connectivity to your record.</description>
+      <consumer_key>mydevices</consumer_key>
+      <secret>mysecret</secret>
+      <frameable>True</frameable>
+      <has_ui>True</has_ui>
+      <start_url_template>
+	http://your.server:8080/MyDevices/start_auth?record_id={record_id}&#38;carenet_id={carenet_id}&#38;document_id={document_id}
+      </start_url_template>
+      <callback_url>
+        http://your.server:8080/MyDevices/after_auth
+      </callback_url>
+ </user_app>
+
+* Copy my_devices.png in indivo_ui_server/ui/jmvc/ui/resources/images/app_icons_32. The file is located in the dist\indivo directory.
+
+

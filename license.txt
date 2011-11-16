@@ -1,0 +1,26 @@
+
+	Copyright(c) 2011 France Telecom / Orange Labs
+	This file is part of MyDevices, a PHA for Indivo X.
+
+MyDevices is free software: you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation, version 3 (LGPLv3).
+ 
+MyDevices is not certified by the Continua Health Alliance, so Continua conformity can’t apply to MyDevices. France Telecom Orange is a promoter member of the Continua Health Alliance (http://www.continuaalliance.org) 
+
+MyDevices is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+ 
+You should have received a copy of the GNU General Public License along with MyDevices, COPYING and COPYING.LESSER. Please read these. If not, see <http://www.gnu.org/licenses/>. 
+
+Third-Party products:
+
+* HAPI is included with this program. 
+HAPI is licensed under MPL 1.1 & GPL v3 and can be downloaded at HAPI http://hl7api.sourceforge.net .
+
+* Spring is included with this program. 
+Spring is licensed under Apache License 2.0 and can be downloaded at http://www.springsource.org .
+
+* Metro is included with this program. 
+Metro is licensed under Common Development and Distribution License v1.0 & GNU General Public License (GPL) v2 and can be downloaded at http://metro.java.net .
+
+* JLInX is included with this program. 
+JLInX is licensed under GNU Lesser General Public License 3 and can be downloaded at http://github.com/fredorange/JLInX .
+
