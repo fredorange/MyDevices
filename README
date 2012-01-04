@@ -1,13 +1,12 @@
-
 	Copyright(c) 2011 France Telecom / Orange Labs
 	This file is part of MyDevices, a PHA for Indivo X.
 
                     Continua interface for Indivo X
                              MyDevices
 
-Contacts: 
-	frederic.perez@orange-ftgroup.com
-	olivier.graille@orange-ftgroup.com
+Contacts:
+        pascal.limeux@orange.com 
+	olivier.graille@orange.com
 
 MyDevices is Continua WAN Receiver project for Indivo X. 
 
